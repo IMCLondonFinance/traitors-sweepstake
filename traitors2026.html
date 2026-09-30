@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Traitors UK 2026 — Office Sweepstake</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --black:#0a0a0a;
+  --dark:#111827;
+  --darker:#0d1117;
+  --red:#8B0000;
+  --red-bright:#cc2222;
+  --red-glow:#ff4444;
+  --gold:#C8973A;
+  --gold-light:#FDF3E3;
+  --gold-dark:#8a6520;
+  --parchment:#f5f0e8;
+  --parchment-dark:#e8e0d0;
+  --stone:#d4c9b0;
+  --text:#1a1a1a;
+  --muted:#6b6b6b;
+  --card:#fff;
+  --border:#ddd8ce;
+  --green:#1B3D2F;
+  --green-light:#2d6b4f;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+  font-family:'DM Sans',sans-serif;
+  background:var(--dark);
+  color:var(--text);
+  min-height:100vh;
+}
+
+/* ── HERO ── */
+.hero{
+  position:relative;
+  background:linear-gradient(180deg,#000 0%,#0d0d0d 40%,#1a0808 100%);
+  padding:0;
+  overflow:hidden;
+  min-height:280px;
+  display:flex;
+  flex-direction:column;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse at 50% 0%,rgba(139,0,0,0.4) 0%,transparent 60%),
+    radial-gradient(ellipse at 20% 50%,rgba(139,0,0,0.15) 0%,transparent 50%),
+    radial-gradient(ellipse at 80% 50%,rgba(139,0,0,0.15) 0%,transparent 50%);
+}
+.hero-candles{
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(ellipse 3px 40px at 10% 100%,rgba(200,151,58,0.6) 0%,transparent 100%),
+    radial-gradient(ellipse 3px 40px at 30% 100%,rgba(200,151,58,0.4) 0%,transparent 100%),
+    radial-gradient(ellipse 3px 40px at 70% 100%,rgba(200,151,58,0.4) 0%,transparent 100%),
+    radial-gradient(ellipse 3px 40px at 90% 100%,rgba(200,151,58,0.6) 0%,transparent 100%);
+  pointer-events:none;
+}
+.hero-inner{
+  position:relative;z-index:2;
+  max-width:1200px;margin:0 auto;
+  padding:2.5rem 2rem 1.5rem;
+  display:flex;align-items:center;justify-content:space-between;gap:2rem;
+  flex-wrap:wrap;
+}
+.hero-left{}
+.hero-dagger{font-size:2.5rem;margin-bottom:.5rem;filter:drop-shadow(0 0 12px rgba(200,151,58,0.8))}
+.hero-title{
+  font-family:'Cinzel',serif;
+  font-size:clamp(1.8rem,4vw,3rem);
+  font-weight:700;
+  color:#fff;
+  line-height:1.1;
+  text-shadow:0 0 30px rgba(139,0,0,0.8),0 2px 4px rgba(0,0,0,0.8);
+  letter-spacing:.05em;
+}
+.hero-title span{color:var(--gold);text-shadow:0 0 20px rgba(200,151,58,0.8)}
+.hero-sub{
+  font-size:.82rem;
+  color:rgba(255,255,255,0.5);
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  margin-top:.5rem;
+}
+.hero-stats{
+  display:flex;gap:1.2rem;flex-shrink:0;flex-wrap:wrap;
+}
+.hstat{
+  text-align:center;
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(200,151,58,0.3);
+  border-radius:8px;
+  padding:.7rem 1.1rem;
+  min-width:80px;
+}
+.hstat-num{font-family:'Cinzel',serif;font-size:1.8rem;color:var(--gold);line-height:1}
+.hstat-label{font-size:.68rem;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:.1em;margin-top:2px}
+
+/* ── STRIPE ── */
+.stripe{
+  height:4px;
+  background:linear-gradient(90deg,var(--red) 0%,var(--gold) 50%,var(--red) 100%);
+  box-shadow:0 0 10px rgba(200,151,58,0.5);
+}
+
+/* ── NAV ── */
+nav{
+  background:rgba(10,10,10,0.95);
+  border-bottom:1px solid rgba(200,151,58,0.2);
+  position:sticky;top:0;z-index:100;
+  backdrop-filter:blur(8px);
+}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 2rem;display:flex;flex-wrap:wrap}
+nav button{
+  background:none;border:none;
+  border-bottom:2px solid transparent;
+  padding:.9rem 1.1rem;
+  font-family:'DM Sans',sans-serif;font-size:.85rem;font-weight:500;
+  color:rgba(255,255,255,0.5);
+  cursor:pointer;transition:all .2s;white-space:nowrap;
+}
+nav button:hover{color:rgba(255,255,255,0.9)}
+nav button.active{color:var(--gold);border-bottom-color:var(--gold)}
+
+/* ── MAIN ── */
+main{
+  background:var(--parchment);
+  max-width:1200px;margin:0 auto;padding:2rem;
+  min-height:calc(100vh - 280px);
+}
+.section{display:none}.section.visible{display:block}
+
+/* ── SECTION TITLE ── */
+.section-title{
+  font-family:'Cinzel',serif;
+  font-size:1.5rem;font-weight:700;
+  color:var(--green);
+  margin-bottom:1.5rem;
+  padding-bottom:.6rem;
+  border-bottom:2px solid var(--gold);
+  display:flex;align-items:center;gap:.5rem;
+}
+
+/* ── LEADERBOARD ── */
+.lb-podium{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:2rem}
+.lb-pod{
+  border-radius:12px;padding:1.5rem;text-align:center;
+  border:2px solid var(--border);background:var(--card);
+  position:relative;overflow:hidden;
+}
+.lb-pod::before{
+  content:'';position:absolute;inset:0;opacity:.05;
+  background:repeating-linear-gradient(45deg,#000 0,#000 1px,transparent 1px,transparent 8px);
+}
+.lb-pod.first{border-color:var(--gold);background:linear-gradient(135deg,#fffdf5,#fff8e8)}
+.lb-pod.second{border-color:#aaa;background:#fafaf8}
+.lb-pod.third{border-color:#c87941;background:#fdf5ef}
+.lb-pod-pos{font-family:'Cinzel',serif;font-size:2.5rem;line-height:1;margin-bottom:.3rem;color:var(--muted)}
+.lb-pod.first .lb-pod-pos{color:var(--gold)}
+.lb-pod.second .lb-pod-pos{color:#888}
+.lb-pod.third .lb-pod-pos{color:#c87941}
+.lb-pod-name{font-family:'Cinzel',serif;font-size:1.1rem;color:var(--text);margin-bottom:.2rem}
+.lb-pod-celeb{font-size:.78rem;color:var(--muted);margin-bottom:.4rem;font-style:italic}
+.lb-pod-amount{font-family:'Cinzel',serif;font-size:2rem;color:var(--green)}
+.lb-pod.first .lb-pod-amount{color:var(--gold-dark)}
+.lb-pod-tags{margin-top:.5rem;display:flex;flex-wrap:wrap;gap:3px;justify-content:center}
+.lb-tag{font-size:.62rem;padding:2px 7px;border-radius:4px;background:#f0ece4;color:var(--muted);border:1px solid var(--border)}
+.lb-tag.manual{background:var(--gold-light);color:var(--gold-dark);border-color:#e0c070}
+
+.lb-table-wrap{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:1.5rem}
+.lb-table-wrap table{width:100%;border-collapse:collapse}
+.lb-table-wrap th{background:var(--green);color:#fff;font-family:'Cinzel',serif;font-size:.78rem;letter-spacing:.06em;padding:.65rem 1rem;text-align:left}
+.lb-table-wrap th.num{text-align:right}
+.lb-table-wrap td{padding:.6rem 1rem;border-bottom:1px solid var(--border);font-size:.86rem;vertical-align:middle}
+.lb-table-wrap tr:last-child td{border-bottom:none}
+.lb-table-wrap tr:hover td{background:#faf8f4}
+.lb-rank{font-family:'Cinzel',serif;font-size:1rem;color:var(--muted);width:36px}
+.lb-total{font-family:'Cinzel',serif;font-size:1.1rem;color:var(--green);text-align:right}
+.lb-celeb-small{font-size:.72rem;color:var(--muted);font-style:italic}
+.status-pill{display:inline-block;font-size:.62rem;font-weight:700;padding:2px 8px;border-radius:10px;text-transform:uppercase;letter-spacing:.06em;margin-left:4px;vertical-align:middle}
+.status-faithful{background:#e8f5ee;color:#1B3D2F;border:1px solid #b5dac7}
+.status-murdered{background:#fee;color:#8B0000;border:1px solid #fcc}
+.status-banished{background:#fff3cd;color:#7a5500;border:1px solid #ffe082}
+.status-winner{background:var(--gold-light);color:var(--gold-dark);border:1px solid var(--gold)}
+.paid-stamp{display:inline-block;border:2px solid #cc0000;color:#cc0000;font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.12em;padding:1px 5px;border-radius:2px;transform:rotate(-6deg);opacity:.85;margin-left:6px;vertical-align:middle;flex-shrink:0}
+
+/* ── CELEBRITIES ── */
+.celeb-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem}
+.celeb-card{
+  background:var(--card);border:1px solid var(--border);border-radius:10px;
+  padding:1rem;transition:all .15s;position:relative;overflow:hidden;
+}
+.celeb-card:hover{box-shadow:0 4px 16px rgba(0,0,0,.1);transform:translateY(-2px)}
+.celeb-card.murdered{border-color:#cc2222;background:#fff8f8}
+.celeb-card.murdered::after{content:'☠️';position:absolute;top:8px;right:8px;font-size:1.2rem;opacity:.7}
+.celeb-card.banished{border-color:#C8973A;background:#fffdf5}
+.celeb-card.banished::after{content:'🚪';position:absolute;top:8px;right:8px;font-size:1.2rem;opacity:.7}
+.celeb-card.winner{border-color:var(--gold);border-width:2px;background:linear-gradient(135deg,#fffdf5,#fff8e8)}
+.celeb-card.winner::after{content:'🏆';position:absolute;top:8px;right:8px;font-size:1.2rem}
+.celeb-initial{
+  width:44px;height:44px;border-radius:50%;
+  background:var(--green);color:#fff;
+  font-family:'Cinzel',serif;font-size:1.1rem;
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:.6rem;flex-shrink:0;
+}
+.celeb-card.murdered .celeb-initial{background:#8B0000}
+.celeb-card.banished .celeb-initial{background:var(--gold-dark)}
+.celeb-card.winner .celeb-initial{background:var(--gold-dark)}
+.celeb-name{font-weight:600;font-size:.9rem;margin-bottom:.15rem}
+.celeb-role{font-size:.72rem;color:var(--muted);margin-bottom:.4rem;font-style:italic}
+.celeb-owner{font-size:.78rem;color:var(--text);display:flex;align-items:center;gap:.3rem}
+.celeb-owner::before{content:'👤';font-size:.7rem}
+.celeb-status{margin-top:.4rem}
+
+/* ── PRIZES ── */
+.prizes-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1rem;margin-bottom:2rem}
+.prize-card{
+  background:var(--card);border:1px solid var(--border);border-radius:10px;
+  padding:1.1rem 1.2rem;display:flex;align-items:flex-start;gap:.8rem;
+  position:relative;overflow:hidden;
+}
+.prize-card.active{border-color:var(--gold);background:var(--gold-light)}
+.prize-card::before{
+  content:'';position:absolute;top:0;left:0;bottom:0;width:3px;
+  background:var(--border);border-radius:3px 0 0 3px;
+}
+.prize-card.active::before{background:var(--gold)}
+.prize-icon{font-size:1.8rem;flex-shrink:0;margin-top:.1rem}
+.prize-body{flex:1;min-width:0}
+.prize-name{font-family:'Cinzel',serif;font-weight:600;font-size:.9rem;margin-bottom:.1rem}
+.prize-how{font-size:.76rem;color:var(--muted);margin-bottom:.4rem}
+.prize-amount{font-family:'Cinzel',serif;font-size:1.3rem;color:var(--green)}
+.prize-leader-box{margin-top:.5rem;padding:.45rem .6rem;border-radius:6px;border:1px solid var(--border);background:#f8f6f0}
+.prize-leader-box.auto{background:#f0f9f4;border-color:#b5dac7}
+.prize-leader-label{font-size:.62rem;text-transform:uppercase;letter-spacing:.08em;font-weight:700;color:var(--muted);margin-bottom:.25rem}
+.prize-leader-box.auto .prize-leader-label{color:var(--green)}
+.prize-leader-team{font-size:.82rem;font-weight:600}
+.prize-leader-owner{font-size:.72rem;color:var(--muted)}
+.prize-pending{font-size:.78rem;color:var(--muted);font-style:italic;margin-top:.5rem}
+
+/* ── MISSION POT ── */
+.mission-pot-card{
+  background:linear-gradient(135deg,var(--dark),#1a0808);
+  border:2px solid var(--gold);border-radius:14px;
+  padding:2rem;text-align:center;color:#fff;margin-bottom:2rem;
+  position:relative;overflow:hidden;
+}
+.mission-pot-card::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at 50% 0%,rgba(200,151,58,0.2) 0%,transparent 70%);
+}
+.mission-pot-label{font-size:.75rem;text-transform:uppercase;letter-spacing:.15em;color:rgba(255,255,255,0.5);margin-bottom:.5rem;position:relative}
+.mission-pot-amount{font-family:'Cinzel',serif;font-size:3.5rem;color:var(--gold);line-height:1;position:relative;text-shadow:0 0 30px rgba(200,151,58,0.5)}
+.mission-pot-sub{font-size:.8rem;color:rgba(255,255,255,0.4);margin-top:.5rem;position:relative}
+.pot-guesses{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden}
+.pot-guesses table{width:100%;border-collapse:collapse}
+.pot-guesses th{background:var(--green);color:#fff;font-family:'Cinzel',serif;font-size:.78rem;letter-spacing:.06em;padding:.6rem 1rem;text-align:left}
+.pot-guesses td{padding:.55rem 1rem;border-bottom:1px solid var(--border);font-size:.86rem}
+.pot-guesses tr:last-child td{border-bottom:none}
+.pot-guesses tr:hover td{background:#faf8f4}
+.closest-badge{background:var(--gold-light);color:var(--gold-dark);border:1px solid var(--gold);font-size:.62rem;font-weight:700;padding:2px 8px;border-radius:10px;text-transform:uppercase;letter-spacing:.06em;margin-left:6px}
+
+/* ── SEARCH ── */
+.search-bar{width:100%;font-family:'DM Sans',sans-serif;font-size:.92rem;padding:.6rem 1rem;border:1px solid var(--border);border-radius:8px;background:var(--card);color:var(--text);outline:none;margin-bottom:1.5rem}
+.search-bar:focus{border-color:var(--gold)}
+
+/* ── ADMIN ── */
+.admin-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem;margin-bottom:2rem}
+.admin-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1rem 1.1rem}
+.admin-card-title{font-family:'Cinzel',serif;font-size:.85rem;font-weight:600;margin-bottom:.6rem;color:var(--green)}
+.admin-select{width:100%;font-family:'DM Sans',sans-serif;font-size:.85rem;padding:.4rem .7rem;border:1px solid var(--border);border-radius:6px;background:var(--card);margin-bottom:.5rem;outline:none}
+.admin-select:focus{border-color:var(--green)}
+.admin-input{width:100%;font-family:'DM Sans',sans-serif;font-size:.85rem;padding:.4rem .7rem;border:1px solid var(--border);border-radius:6px;background:var(--card);outline:none}
+.admin-input:focus{border-color:var(--green)}
+.admin-btn{background:var(--green);color:#fff;border:none;border-radius:6px;padding:.4rem .9rem;font-family:'DM Sans',sans-serif;font-size:.82rem;font-weight:600;cursor:pointer;margin-top:.4rem;width:100%}
+.admin-btn:hover{background:var(--green-light)}
+.admin-btn.danger{background:#8B0000}
+.admin-btn.danger:hover{background:#cc2222}
+.admin-note{background:var(--gold-light);border:1px solid #e0c070;border-radius:8px;padding:.75rem 1rem;font-size:.8rem;color:#7a5500;margin-bottom:1.5rem}
+
+@media(max-width:700px){
+  .lb-podium{grid-template-columns:1fr}
+  .hero-stats{display:none}
+  main{padding:1rem}
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-candles"></div>
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="hero-dagger">🗡️</div>
+      <div class="hero-title">The <span>Traitors</span> UK<br>Office Sweepstake</div>
+      <div class="hero-sub">Celebrity Series 2 &nbsp;·&nbsp; BBC One &nbsp;·&nbsp; Autumn 2026</div>
+    </div>
+    <div class="hero-stats">
+      <div class="hstat"><div class="hstat-num">21</div><div class="hstat-label">Celebrities</div></div>
+      <div class="hstat"><div class="hstat-num" id="stat-pot">£210</div><div class="hstat-label">Prize Pot</div></div>
+      <div class="hstat"><div class="hstat-num" id="stat-remaining">21</div><div class="hstat-label">Remaining</div></div>
+      <div class="hstat"><div class="hstat-num" id="stat-episode">0</div><div class="hstat-label">Episodes</div></div>
+    </div>
+  </div>
+</header>
+<div class="stripe"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <button class="active" onclick="showSection('leaderboard',this)">🏆 Leaderboard</button>
+    <button onclick="showSection('prizes',this)">🎖️ Prizes</button>
+    <button onclick="showSection('missionpot',this)">💰 Mission Pot</button>
+    <button onclick="showSection('celebrities',this)">🗡️ Celebrities</button>
+    <button onclick="showSection('admin',this)">⚙️ Admin</button>
+  </div>
+</nav>
+
+<!-- MAIN -->
+<main>
+
+<!-- LEADERBOARD -->
+<section id="leaderboard" class="section visible">
+  <div class="section-title">🏆 Leaderboard</div>
+  <div id="lb-content"><div style="color:var(--muted);text-align:center;padding:3rem">Loading...</div></div>
+</section>
+
+<!-- PRIZES -->
+<section id="prizes" class="section">
+  <div class="section-title">🎖️ Prize Breakdown</div>
+  <div id="prizes-content"></div>
+</section>
+
+<!-- MISSION POT -->
+<section id="missionpot" class="section">
+  <div class="section-title">💰 Mission Pot Predictor</div>
+  <div id="pot-content"></div>
+</section>
+
+<!-- CELEBRITIES -->
+<section id="celebrities" class="section">
+  <div class="section-title">🗡️ All Celebrities</div>
+  <input class="search-bar" type="text" placeholder="Search celebrity or owner…" oninput="filterCelebs(this.value)">
+  <div class="celeb-grid" id="celeb-grid"></div>
+</section>
+
+<!-- ADMIN -->
+<section id="admin" class="section">
+  <div class="section-title">⚙️ Admin Panel</div>
+  <div class="admin-note">Use this panel to update celebrity status, Mission Pot amount, and episode count. All changes save locally in your browser.</div>
+  <div id="admin-content"></div>
+</section>
+
+</main>
+
+<script>
+// ── DATA ──────────────────────────────────────────────────────────
+const STORAGE_KEY = 'traitors2026_v1';
+
+const celebrities = [
+  {name:'Amol Rajan',      role:'Journalist & broadcaster'},
+  {name:'Bella Ramsey',    role:'Actor (The Last of Us)'},
+  {name:'Hannah Fry',      role:'Broadcaster & mathematician'},
+  {name:'James Acaster',   role:'Comedian & presenter'},
+  {name:'James Blunt',     role:'Singer-songwriter'},
+  {name:'Jerry Hall',      role:'Model & actress'},
+  {name:'Joanne McNally',  role:'Stand-up comedian'},
+  {name:'Joe Lycett',      role:'Comedian & presenter'},
+  {name:'Julie Hesmondhalgh',role:'Actress (Coronation Street)'},
+  {name:'King Kenny',      role:'Social media personality'},
+  {name:'Leigh-Anne Pinnock',role:'Singer (Little Mix)'},
+  {name:'Maya Jama',       role:'Television presenter'},
+  {name:'Michael Sheen',   role:'Actor'},
+  {name:'Miranda Hart',    role:'Actress & comedian'},
+  {name:"Myha'la",         role:'Actress (Industry)'},
+  {name:'Richard E. Grant',role:'Actor'},
+  {name:'Rob Beckett',     role:'Comedian & presenter'},
+  {name:'Romesh Ranganathan',role:'Comedian & presenter'},
+  {name:'Ross Kemp',       role:'Actor & TV presenter'},
+  {name:'Sebastian Croft', role:'Actor & singer-songwriter'},
+  {name:'Sharon Rooney',   role:'Actress'},
+];
+
+// Prizes
+const PRIZES = [
+  {id:'winner',    icon:'🏆', name:'Winner',              how:'Owner of the last Faithful standing.',          amount:80},
+  {id:'runnerup',  icon:'🥈', name:'Runner-up',           how:'Owner of the last person eliminated before the winner.', amount:40},
+  {id:'firstmurder',icon:'☠️',name:'First Murdered',      how:'Owner of the first celebrity killed in the night.', amount:25},
+  {id:'firstbanish',icon:'🚪',name:'First Banished',      how:'Owner of the first celebrity voted out at the Round Table.', amount:25},
+  {id:'missionpot',icon:'💰', name:'Mission Pot Predictor',how:'Owner whose guess is closest to the final charity pot amount.', amount:40},
+];
+
+const TOTAL_POT = 210;
+
+// ── STATE (localStorage) ─────────────────────────────────────────
+function getState(){
+  try{return JSON.parse(localStorage.getItem(STORAGE_KEY)||'{}')}catch(e){return{}}
+}
+function saveState(s){ localStorage.setItem(STORAGE_KEY,JSON.stringify(s)); }
+
+function getFullState(){
+  const s=getState();
+  return {
+    owners:      s.owners||{},       // celeb name -> owner name
+    status:      s.status||{},       // celeb name -> 'faithful'|'murdered'|'banished'|'winner'
+    missionPot:  s.missionPot||null, // final pot amount
+    potGuesses:  s.potGuesses||{},   // owner name -> guess amount
+    prizeWinners:s.prizeWinners||{}, // prize id -> celeb name (manual overrides)
+    episode:     s.episode||0,
+    paid:        s.paid||[],
+  };
+}
+
+// ── HELPERS ──────────────────────────────────────────────────────
+function initials(name){ return name.split(' ').map(w=>w[0]).join('').slice(0,2).toUpperCase(); }
+
+function getStatus(celeb, st){
+  return st.status[celeb]||'faithful';
+}
+
+function statusPill(status){
+  const map={
+    faithful:'<span class="status-pill status-faithful">Faithful</span>',
+    murdered: '<span class="status-pill status-murdered">☠️ Murdered</span>',
+    banished: '<span class="status-pill status-banished">🚪 Banished</span>',
+    winner:   '<span class="status-pill status-winner">🏆 Winner</span>',
+    traitor:  '<span class="status-pill status-murdered">🗡️ Traitor</span>',
+  };
+  return map[status]||'';
+}
+
+// ── PRIZE CALCULATION ────────────────────────────────────────────
+function calcPrizes(st){
+  const winners={};
+  const pw=st.prizeWinners;
+
+  // Winner
+  const winnerCeleb=pw.winner||Object.keys(st.status).find(c=>st.status[c]==='winner');
+  if(winnerCeleb&&st.owners[winnerCeleb]) winners.winner={celeb:winnerCeleb,owner:st.owners[winnerCeleb]};
+
+  // Runner-up (manual only)
+  if(pw.runnerup&&st.owners[pw.runnerup]) winners.runnerup={celeb:pw.runnerup,owner:st.owners[pw.runnerup]};
+
+  // First murdered
+  if(pw.firstmurder&&st.owners[pw.firstmurder]) winners.firstmurder={celeb:pw.firstmurder,owner:st.owners[pw.firstmurder]};
+
+  // First banished
+  if(pw.firstbanish&&st.owners[pw.firstbanish]) winners.firstbanish={celeb:pw.firstbanish,owner:st.owners[pw.firstbanish]};
+
+  // Mission pot predictor
+  if(st.missionPot!==null&&Object.keys(st.potGuesses).length>0){
+    let best=null,bestDiff=Infinity;
+    Object.entries(st.potGuesses).forEach(([owner,guess])=>{
+      const diff=Math.abs(Number(guess)-Number(st.missionPot));
+      if(diff<bestDiff){bestDiff=diff;best=owner;}
+    });
+    if(best) winners.missionpot={celeb:null,owner:best,diff:bestDiff};
+  }
+
+  return winners;
+}
+
+// ── LEADERBOARD ──────────────────────────────────────────────────
+function renderLeaderboard(){
+  const st=getFullState();
+  const prizeW=calcPrizes(st);
+  const ownerTotals={};
+
+  // Collect unique owners
+  Object.values(st.owners).forEach(o=>{if(o)ownerTotals[o]={total:0,prizes:[],celebs:[]};});
+  celebrities.forEach(c=>{
+    const o=st.owners[c.name];
+    if(o&&ownerTotals[o]) ownerTotals[o].celebs.push(c.name);
+  });
+
+  // Award prizes
+  PRIZES.forEach(p=>{
+    const w=prizeW[p.id];
+    if(!w)return;
+    const owner=w.owner;
+    if(!ownerTotals[owner])ownerTotals[owner]={total:0,prizes:[],celebs:[]};
+    ownerTotals[owner].total+=p.amount;
+    ownerTotals[owner].prizes.push({name:p.name,icon:p.icon,amount:p.amount});
+  });
+
+  const sorted=Object.entries(ownerTotals).sort((a,b)=>b[1].total-a[1].total||a[0].localeCompare(b[0]));
+
+  let html='';
+
+  // Podium
+  if(sorted.length>0&&sorted[0][1].total>0){
+    const posClass=['first','second','third'];
+    const posMedal=['🥇','🥈','🥉'];
+    html+='<div class="lb-podium">';
+    sorted.slice(0,3).forEach(([name,data],i)=>{
+      const isPaid=st.paid.includes(name);
+      const celebList=data.celebs.map(c=>'<em>'+c+'</em>').join(', ');
+      const tags=data.prizes.slice(0,3).map(p=>'<span class="lb-tag">'+p.icon+' '+p.name+'</span>').join('');
+      html+=`<div class="lb-pod ${posClass[i]}">
+        <div class="lb-pod-pos">${posMedal[i]}</div>
+        <div class="lb-pod-name">${name}${isPaid?'<span class="paid-stamp">PAID</span>':''}</div>
+        <div class="lb-pod-celeb">${celebList}</div>
+        <div class="lb-pod-amount">&pound;${data.total}</div>
+        <div class="lb-pod-tags">${tags}</div>
+      </div>`;
+    });
+    html+='</div>';
+  } else {
+    html+='<div style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:2.5rem;text-align:center;color:var(--muted);margin-bottom:2rem"><div style="font-size:2.5rem;margin-bottom:.5rem">⏳</div><p>Prizes will appear here once celebrities are assigned and the show begins!</p></div>';
+  }
+
+  // Full table
+  html+=`<div class="lb-table-wrap"><table>
+    <thead><tr>
+      <th style="width:36px">#</th>
+      <th>Owner</th>
+      <th>Celebrity</th>
+      <th>Prizes</th>
+      <th style="width:60px"></th>
+      <th class="num">Total</th>
+    </tr></thead><tbody>`;
+
+  sorted.forEach(([name,data],i)=>{
+    const isPaid=st.paid.includes(name);
+    const celebList=data.celebs.map(c=>{
+      const status=getStatus(c,st);
+      return c+(status!=='faithful'?statusPill(status):'');
+    }).join(', ');
+    const prizeTagsHtml=data.prizes.map(p=>'<span class="lb-tag">'+p.icon+' '+p.name+' &pound;'+p.amount+'</span>').join(' ');
+    const noprize='<span style="color:var(--muted);font-size:.8rem">No prizes yet</span>';
+    html+=`<tr>
+      <td class="lb-rank">${i+1}</td>
+      <td><strong>${name}</strong></td>
+      <td class="lb-celeb-small">${celebList||'—'}</td>
+      <td>${prizeTagsHtml||noprize}</td>
+      <td style="text-align:center">${isPaid?'<span class="paid-stamp">PAID</span>':''}</td>
+      <td class="lb-total">&pound;${data.total}</td>
+    </tr>`;
+  });
+  html+='</tbody></table></div>';
+
+  // Remaining count
+  const remaining=celebrities.filter(c=>!['murdered','banished','winner','traitor'].includes(getStatus(c.name,st))).length;
+  document.getElementById('stat-remaining').textContent=remaining;
+  document.getElementById('stat-episode').textContent=st.episode;
+
+  document.getElementById('lb-content').innerHTML=html;
+}
+
+// ── PRIZES ───────────────────────────────────────────────────────
+function renderPrizes(){
+  const st=getFullState();
+  const prizeW=calcPrizes(st);
+  let html='<div class="prizes-grid">';
+  PRIZES.forEach(p=>{
+    const w=prizeW[p.id];
+    let leaderHtml='';
+    if(w){
+      leaderHtml=`<div class="prize-leader-box auto">
+        <div class="prize-leader-label">🏆 Current leader</div>
+        <div class="prize-leader-team">${w.celeb?w.celeb+' &rarr; ':''}<strong>${w.owner}</strong></div>
+        ${w.diff!==undefined?'<div class="prize-leader-owner">Off by £'+w.diff+'</div>':''}
+      </div>`;
+    } else {
+      leaderHtml='<div class="prize-pending">Not yet determined</div>';
+    }
+    html+=`<div class="prize-card ${w?'active':''}">
+      <div class="prize-icon">${p.icon}</div>
+      <div class="prize-body">
+        <div class="prize-name">${p.name}</div>
+        <div class="prize-how">${p.how}</div>
+        <div class="prize-amount">&pound;${p.amount}</div>
+        ${leaderHtml}
+      </div>
+    </div>`;
+  });
+  html+='</div>';
+  document.getElementById('prizes-content').innerHTML=html;
+}
+
+// ── MISSION POT ──────────────────────────────────────────────────
+function renderMissionPot(){
+  const st=getFullState();
+  const potAmount=st.missionPot;
+  let html='';
+
+  // Big pot display
+  html+=`<div class="mission-pot-card">
+    <div class="mission-pot-label">Current Mission Pot Total</div>
+    <div class="mission-pot-amount">${potAmount!==null?'&pound;'+Number(potAmount).toLocaleString():'???'}</div>
+    <div class="mission-pot-sub">${potAmount!==null?'Final amount — closest guess wins £40':'Updated each episode by admin'}</div>
+  </div>`;
+
+  // Guesses table
+  const guesses=st.potGuesses;
+  html+='<div class="pot-guesses"><table><thead><tr><th>#</th><th>Owner</th><th>Guess</th><th>Difference</th></tr></thead><tbody>';
+
+  if(Object.keys(guesses).length===0){
+    html+='<tr><td colspan="4" style="text-align:center;color:var(--muted);padding:2rem">No guesses entered yet — add via Admin panel</td></tr>';
+  } else {
+    const sorted=Object.entries(guesses).sort((a,b)=>Number(a[1])-Number(b[1]));
+    let bestDiff=potAmount!==null?Math.min(...sorted.map(([,g])=>Math.abs(Number(g)-Number(potAmount)))):null;
+    sorted.forEach(([owner,guess],i)=>{
+      const diff=potAmount!==null?Math.abs(Number(guess)-Number(potAmount)):null;
+      const isClosest=diff!==null&&diff===bestDiff;
+      html+=`<tr>
+        <td>${i+1}</td>
+        <td><strong>${owner}</strong>${isClosest?'<span class="closest-badge">Closest!</span>':''}</td>
+        <td>&pound;${Number(guess).toLocaleString()}</td>
+        <td>${diff!==null?'&pound;'+diff.toLocaleString():'—'}</td>
+      </tr>`;
+    });
+  }
+  html+='</tbody></table></div>';
+  document.getElementById('pot-content').innerHTML=html;
+}
+
+// ── CELEBRITIES ──────────────────────────────────────────────────
+function renderCelebs(filter){
+  const st=getFullState();
+  const f=(filter||'').toLowerCase();
+  const cards=celebrities
+    .filter(c=>!f||(c.name.toLowerCase().includes(f)||(st.owners[c.name]||'').toLowerCase().includes(f)))
+    .map(c=>{
+      const owner=st.owners[c.name]||'';
+      const status=getStatus(c.name,st);
+      const ini=initials(c.name);
+      return `<div class="celeb-card ${status==='faithful'?'':status}">
+        <div class="celeb-initial">${ini}</div>
+        <div class="celeb-name">${c.name}</div>
+        <div class="celeb-role">${c.role}</div>
+        ${owner?`<div class="celeb-owner">${owner}</div>`:'<div class="celeb-owner" style="color:var(--muted)">Unassigned</div>'}
+        <div class="celeb-status">${statusPill(status)}</div>
+      </div>`;
+    }).join('');
+  document.getElementById('celeb-grid').innerHTML=cards||'<p style="color:var(--muted)">No results.</p>';
+}
+function filterCelebs(v){renderCelebs(v);}
+
+// ── ADMIN ────────────────────────────────────────────────────────
+function renderAdmin(){
+  const st=getFullState();
+  const celebNames=celebrities.map(c=>c.name);
+  const allOwners=[...new Set(Object.values(st.owners).filter(Boolean))].sort();
+
+  // Celebrity status updater
+  const celebOpts=celebNames.map(n=>'<option value="'+n+'">'+ n+'</option>').join('');
+  const statusOpts=['faithful','murdered','banished','winner','traitor'].map(s=>`<option value="${s}">${s.charAt(0).toUpperCase()+s.slice(1)}</option>`).join('');
+
+  // Prize winner setters
+  const prizeCards=PRIZES.filter(p=>p.id!=='missionpot').map(p=>{
+    const opts=celebNames.map(n=>`<option value="${n}" ${st.prizeWinners[p.id]===n?'selected':''}>${n}</option>`).join('');
+    return `<div class="admin-card">
+      <div class="admin-card-title">${p.icon} ${p.name}</div>
+      <select class="admin-select" id="pw_${p.id}">
+        <option value="">— not yet determined —</option>
+        ${opts}
+      </select>
+      <button class="admin-btn" onclick="savePrizeWinner('${p.id}')">Save</button>
+    </div>`;
+  }).join('');
+
+  // Owner assignment
+  const ownerRows=celebNames.map(n=>`
+    <div style="display:flex;gap:.5rem;align-items:center;margin-bottom:.4rem">
+      <span style="font-size:.82rem;min-width:160px">${n}</span>
+      <input class="admin-input" id="owner_${n.replace(/[^a-z0-9]/gi,'_')}" value="${st.owners[n]||''}" placeholder="Owner name" style="flex:1">
+    </div>`).join('');
+
+  let html=`
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:2rem">
+      <div>
+        <div class="admin-card" style="margin-bottom:1rem">
+          <div class="admin-card-title">⚙️ Update Celebrity Status</div>
+          <select class="admin-select" id="admin-celeb-select">${celebOpts}</select>
+          <select class="admin-select" id="admin-status-select">${statusOpts}</select>
+          <button class="admin-btn" onclick="saveStatus()">Update Status</button>
+        </div>
+        <div class="admin-card" style="margin-bottom:1rem">
+          <div class="admin-card-title">💰 Mission Pot Amount</div>
+          <input class="admin-input" id="pot-input" type="number" value="${st.missionPot||''}" placeholder="e.g. 72500">
+          <button class="admin-btn" onclick="savePot()" style="margin-top:.4rem">Update Pot</button>
+        </div>
+        <div class="admin-card" style="margin-bottom:1rem">
+          <div class="admin-card-title">📺 Episode Count</div>
+          <input class="admin-input" id="ep-input" type="number" value="${st.episode||0}" min="0" max="10">
+          <button class="admin-btn" onclick="saveEpisode()" style="margin-top:.4rem">Update</button>
+        </div>
+        <div class="admin-card">
+          <div class="admin-card-title">✅ Mark as Paid</div>
+          <select class="admin-select" id="paid-select">
+            <option value="">— select owner —</option>
+            ${allOwners.map(o=>'<option value="'+o+'"'+(st.paid.includes(o)?' disabled':'')+'>'+o+(st.paid.includes(o)?' (paid)':'')+'</option>').join('')}
+          </select>
+          <button class="admin-btn" onclick="markPaid()">Mark Paid</button>
+        </div>
+      </div>
+      <div>
+        <div class="admin-card" style="margin-bottom:1rem">
+          <div class="admin-card-title">🗡️ Prize Winners</div>
+          <div style="display:grid;gap:.6rem">${prizeCards}</div>
+        </div>
+      </div>
+    </div>
+    <div class="admin-card">
+      <div class="admin-card-title">👤 Owner Assignments</div>
+      <p style="font-size:.78rem;color:var(--muted);margin-bottom:.8rem">Enter owner names for each celebrity. Will be loaded automatically from the spreadsheet once returned.</p>
+      <div style="max-height:400px;overflow-y:auto">${ownerRows}</div>
+      <button class="admin-btn" onclick="saveOwners()" style="margin-top:.8rem">Save All Owners</button>
+    </div>
+    <div class="admin-card" style="margin-top:1rem">
+      <div class="admin-card-title">🎯 Mission Pot Guesses</div>
+      <p style="font-size:.78rem;color:var(--muted);margin-bottom:.8rem">Enter each owner's guess for the final Mission Pot amount.</p>
+      <div id="guess-rows">
+        ${allOwners.map(o=>`<div style="display:flex;gap:.5rem;align-items:center;margin-bottom:.4rem">
+          <span style="font-size:.82rem;min-width:180px">${o}</span>
+          <input class="admin-input" id="guess_${o.replace(/[^a-z0-9]/gi,'_')}" type="number" value="${st.potGuesses[o]||''}" placeholder="Guess £" style="flex:1">
+        </div>`).join('')}
+      </div>
+      <button class="admin-btn" onclick="saveGuesses()" style="margin-top:.8rem">Save All Guesses</button>
+    </div>`;
+
+  document.getElementById('admin-content').innerHTML=html;
+}
+
+function saveStatus(){
+  const celeb=document.getElementById('admin-celeb-select').value;
+  const status=document.getElementById('admin-status-select').value;
+  if(!celeb)return;
+  const st=getFullState();
+  st.status[celeb]=status;
+  saveState(st);
+  renderAll();
+  const btn=event.target;btn.textContent='✓ Saved!';btn.style.background='var(--gold-dark)';
+  setTimeout(()=>{btn.textContent='Update Status';btn.style.background='';},1500);
+}
+
+function savePrizeWinner(id){
+  const val=document.getElementById('pw_'+id).value;
+  const st=getFullState();
+  if(val) st.prizeWinners[id]=val; else delete st.prizeWinners[id];
+  saveState(st);
+  renderAll();
+  const btn=event.target;btn.textContent='✓ Saved!';btn.style.background='var(--gold-dark)';
+  setTimeout(()=>{btn.textContent='Save';btn.style.background='';},1500);
+}
+
+function savePot(){
+  const val=document.getElementById('pot-input').value;
+  const st=getFullState();
+  st.missionPot=val?Number(val):null;
+  saveState(st);renderAll();
+  const btn=event.target;btn.textContent='✓ Saved!';btn.style.background='var(--gold-dark)';
+  setTimeout(()=>{btn.textContent='Update Pot';btn.style.background='';},1500);
+}
+
+function saveEpisode(){
+  const val=document.getElementById('ep-input').value;
+  const st=getFullState();
+  st.episode=Number(val)||0;
+  saveState(st);renderAll();
+  const btn=event.target;btn.textContent='✓ Saved!';btn.style.background='var(--gold-dark)';
+  setTimeout(()=>{btn.textContent='Update';btn.style.background='';},1500);
+}
+
+function markPaid(){
+  const owner=document.getElementById('paid-select').value;
+  if(!owner)return;
+  const st=getFullState();
+  if(!st.paid.includes(owner))st.paid.push(owner);
+  saveState(st);renderAll();
+}
+
+function saveOwners(){
+  const st=getFullState();
+  celebrities.forEach(c=>{
+    const id='owner_'+c.name.replace(/[^a-z0-9]/gi,'_');
+    const el=document.getElementById(id);
+    if(el)st.owners[c.name]=el.value.trim();
+  });
+  saveState(st);renderAll();
+  const btn=event.target;btn.textContent='✓ Saved!';btn.style.background='var(--gold-dark)';
+  setTimeout(()=>{btn.textContent='Save All Owners';btn.style.background='';},1500);
+}
+
+function saveGuesses(){
+  const st=getFullState();
+  const allOwners=[...new Set(Object.values(st.owners).filter(Boolean))];
+  allOwners.forEach(o=>{
+    const id='guess_'+o.replace(/[^a-z0-9]/gi,'_');
+    const el=document.getElementById(id);
+    if(el&&el.value)st.potGuesses[o]=Number(el.value);
+    else if(el)delete st.potGuesses[o];
+  });
+  saveState(st);renderAll();
+  const btn=event.target;btn.textContent='✓ Saved!';btn.style.background='var(--gold-dark)';
+  setTimeout(()=>{btn.textContent='Save All Guesses';btn.style.background='';},1500);
+}
+
+// ── NAV ──────────────────────────────────────────────────────────
+function showSection(id,btn){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('visible'));
+  document.querySelectorAll('nav button').forEach(b=>b.classList.remove('active'));
+  document.getElementById(id).classList.add('visible');
+  btn.classList.add('active');
+  if(id==='leaderboard')renderLeaderboard();
+  if(id==='prizes')renderPrizes();
+  if(id==='missionpot')renderMissionPot();
+  if(id==='celebrities')renderCelebs();
+  if(id==='admin')renderAdmin();
+}
+
+function renderAll(){
+  renderLeaderboard();
+  renderPrizes();
+  renderMissionPot();
+  renderCelebs();
+  const adminVisible=document.getElementById('admin').classList.contains('visible');
+  if(adminVisible)renderAdmin();
+}
+
+// ── INIT ─────────────────────────────────────────────────────────
+renderLeaderboard();
+renderCelebs();
+</script>
+</body>
+</html>
